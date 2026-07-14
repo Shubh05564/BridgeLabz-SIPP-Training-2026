@@ -1,0 +1,33 @@
+SELECT state_name,
+       report_date,
+       confirmed_cases
+FROM covid_cases c1
+WHERE state_name = 'Mumbai'
+AND confirmed_cases =
+(
+    SELECT MAX(c2.confirmed_cases)
+    FROM covid_cases c2
+    WHERE c2.state_name = c1.state_name
+);
+
+
+SELECT country_name,
+       vaccinated_population AS population,
+       'Vaccinated' AS status
+FROM covid_vaccines
+
+UNION
+
+SELECT country_name,
+       unvaccinated_population AS population,
+       'Unvaccinated' AS status
+FROM covid_vaccines;
+
+
+SELECT country_name
+FROM covid_deaths
+WHERE country_name NOT IN
+(
+    SELECT country_name
+    FROM covid_cases
+);
