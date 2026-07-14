@@ -1,1 +1,27 @@
 
+SELECT country_name, total_deaths
+FROM covid_deaths
+WHERE total_deaths >
+(
+    SELECT AVG(total_deaths)
+    FROM covid_deaths
+);
+
+SELECT country_name
+FROM countries
+WHERE country_id IN
+(
+    SELECT country_id
+    FROM covid_casesSELECT state_name,
+       report_date,
+       confirmed_cases
+FROM covid_cases c1
+WHERE state_name = 'Mumbai'
+AND confirmed_cases =
+(
+    SELECT MAX(c2.confirmed_cases)
+    FROM covid_cases c2
+    WHERE c2.state_name = c1.state_name
+);
+    WHERE confirmed_cases > 1000000
+);
