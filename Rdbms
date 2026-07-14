@@ -1,1 +1,22 @@
 
+100%
+create database home;
+use home;
+ create table shubh(
+ rollno int primary key,
+name varchar(50),
+marks int not null,
+grade varchar(1),
+city varchar(10)
+ );
+
+ INSERT INTO shubh(rollno,name,city,grade,marks)
+ values
+ (101,"chitransh","bilsi","A",84),
+ (102,"snehlata","budaun","A",85),
+ (103,"pooja","bareily","A",89),
+ (104,"shraddha","agra","A",90),
+ (105,"aastha","mathura","A",79), 
+ (106,"deva","chaundoshi","A",99);
+ 
+
